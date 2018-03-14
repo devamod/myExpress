@@ -1,0 +1,50 @@
+<html ng-app="demoapp">
+    <head>
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    </head>
+    <body ng-controller="invoice as invoice">
+        <!--<form action="/add" method="get" target="_self">-->
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" ng-model="invoice.name" name="product" placeholder="item name">
+            </div>
+            <div class="col-md-3">
+                <input type="int" ng-model="invoice.amnt" name="amount" placeholder="quantity">
+            </div>
+            <div class="col-md-3">
+                    <input type="int" ng-model="invoice.price" name="price" placeholder="price">
+                </div>
+            <div class="col-md-3 button">
+                    <button ng-click="invoice.add()">Add item</button>
+            </div>
+        </div>
+        <!--</form>-->
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+               <tr>
+                <th>Item name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+               </tr>
+               <tr ng-repeat="item in invoice.item">
+                <td>{{item.name}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.quantity*item.price}} <button class="button" style="text-align:right" ng-click="invoice.delete(item.id)">Delete item</button></td>
+               </tr>
+               <tr>
+                   <td style="text-align:center" colspan="3">Final Total</td>
+                   <td>{{invoice.pic}}</td>
+            
+               </tr>
+            </table>
+
+        </div>
+
+        </div>
+    </body>
+</html> 
